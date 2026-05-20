@@ -16,13 +16,11 @@ def load_data():
     data = f'https://drive.google.com/uc?export=download&id={file_id}'
     return pd.read_csv(data)
 
-def fknn_predict(X_train, y_train, X_test, k=11, m=2, p=1):
+def fknn_predict(X_train, y_train, X_test, k, m=2, p=2):
     preds = []
-    memberships = []
 
     X_train = np.array(X_train)
     y_train = np.array(y_train)
-
     classes = np.unique(y_train)
 
     N = len(y_train)
@@ -32,26 +30,25 @@ def fknn_predict(X_train, y_train, X_test, k=11, m=2, p=1):
         n_c = np.sum(y_train == c)
         for j in range(N):
             if y_train[j] == c:
-                U[j, i] = 0.51  #jika kelas datanya sama dengan kelas c, nilai keanggotaan 0,51
+                U[j, i] = 0.5 + (0.49 * (n_c / N))
             else:
                 U[j, i] = 0.49 * (n_c / N)
 
     for x in X_test:
-        distances = np.linalg.norm(X_train - x, axis=1, ord=p) 
-        idx = np.argsort(distances)[:k] 
-        d_k = distances[idx] 
-        d_k[d_k == 0] = 1e-6 #agar tidak dibagi dengan 0
+        jarak = np.linalg.norm(X_train - x, axis=1, ord=p)
+        idx = np.argsort(jarak)[:k]
+        d_k = jarak[idx]
+        d_k[d_k == 0] = 1e-6
 
         u = {}
         for i, c in enumerate(classes):
-            num = np.sum(U[idx, i] / (d_k ** (2 / (m-1))))
-            den = np.sum(1 / (d_k ** (2 / (m-1))))
+            num = np.sum(U[idx, i] / (d_k ** (2 / (m - 1))))
+            den = np.sum(1 / (d_k ** (2 / (m - 1))))
             u[c] = num / den
 
         preds.append(max(u, key=u.get))
-        memberships.append(u)
 
-    return np.array(preds), memberships
+    return np.array(preds)
 
 def clean_data(df):
 
