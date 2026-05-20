@@ -44,18 +44,7 @@ def data_tab():
         .astype(float)
     )
 
-    
-
     st.title("Exploration Data Analyst")
-
-    # DISTRIBUSI SETIAP FITUR
-   
-    st.subheader("Persebaran Data")
-
-    pairplot = sns.pairplot(df[num_cols + ['DX']], hue="DX", diag_kind="kde")
-
-    st.pyplot(pairplot.fig)
-    plt.close()
 
     st.subheader("Persebaran Data Boxplot")
     # Boxplot
@@ -69,36 +58,6 @@ def data_tab():
         fig_box.delaxes(axes[j])
     fig_box.tight_layout()
     st.pyplot(fig_box)
-
-    st.subheader("Deteksi Outlier (Z-Score)")
-
-    # Hitung Z-score
-    z_scores = df[num_cols].apply(zscore)
-
-    fig, ax = plt.subplots(figsize=(14,6))
-
-    for col in num_cols:
-        ax.scatter(
-            range(len(z_scores)),
-            z_scores[col],
-            label=col,
-            alpha=0.6,
-            s=15
-        )
-
-    # Garis batas outlier
-    ax.axhline(3)
-    ax.axhline(-3)
-
-    ax.set_title("Scatter Plot Z-Score untuk Deteksi Outlier")
-    ax.set_xlabel("Indeks Data")
-    ax.set_ylabel("Nilai Z-Score")
-    ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-
-    fig.tight_layout()
-
-    st.pyplot(fig)
-    plt.close(fig)
 
 
 
