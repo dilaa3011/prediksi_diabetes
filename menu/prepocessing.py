@@ -6,7 +6,7 @@ def show_preprocessing_tab():
     st.title("Preprocessing Data")
 
     # LOAD DATA
-    file_id = '1RwqEU4qi8EceAoOlfx2RYjBK6DkL-Snf'
+    file_id = '1IsnBFlnQfDsDs0OFZDIgx3KCfSsEScrW'
     data = f'https://drive.google.com/uc?export=download&id={file_id}'
     df = pd.read_csv(data)
 

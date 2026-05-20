@@ -11,7 +11,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 from imblearn.over_sampling import SMOTE
 
 def load_data():
-    file_id = '1RwqEU4qi8EceAoOlfx2RYjBK6DkL-Snf'
+    file_id = '1IsnBFlnQfDsDs0OFZDIgx3KCfSsEScrW'
+
     data = f'https://drive.google.com/uc?export=download&id={file_id}'
     return pd.read_csv(data)
 
