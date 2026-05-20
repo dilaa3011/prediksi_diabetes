@@ -70,11 +70,7 @@ def show_preprocessing_tab():
     import matplotlib.pyplot as plt
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X_scaled, y,
-        test_size=0.2,
-        random_state=42,
-        stratify=y
-    )
+    X_scaled, y, test_size=0.2, random_state=42)
 
     st.write("Jumlah Data Setelah Split:")
     st.write(f"Data Train: {len(X_train)}")
