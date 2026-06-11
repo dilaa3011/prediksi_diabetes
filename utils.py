@@ -30,7 +30,7 @@ def fknn_predict(X_train, y_train, X_test, k, m=2, p=2):
         n_c = np.sum(y_train == c)
         for j in range(N):
             if y_train[j] == c:
-                U[j, i] = 0.5 + (0.49 * (n_c / N))
+                U[j, i] = 0.51 + (0.49 * (n_c / N))
             else:
                 U[j, i] = 0.49 * (n_c / N)
 

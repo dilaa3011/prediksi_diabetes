@@ -69,7 +69,7 @@ def modelling_tab():
         progress.progress(40)
 
         # PARAMETER MODEL
-        k = 11
+        k =7
         p = 1   # Manhattan Distance
 
         # TRAINING + PREDIKSI
@@ -107,7 +107,7 @@ def modelling_tab():
 
         st.success(f"""
         Metode Jarak  : Manhattan
-        Nilai K       : 11
+        Nilai K       : 7
         Accuracy      : {round(accuracy,4)}
         Precision     : {round(precision,4)}
         Recall        : {round(recall,4)}
@@ -142,7 +142,7 @@ def modelling_tab():
         hasil = pd.DataFrame({
             "Metode": ["FKNN"],
             "Jarak": ["Manhattan"],
-            "K": [11],
+            "K": [7],
             "Accuracy": [round(accuracy,4)],
             "Precision": [round(precision,4)],
             "Recall": [round(recall,4)],
@@ -156,7 +156,7 @@ def modelling_tab():
         st.subheader("Analisis Hasil")
 
         st.markdown(f"""
-        Model Fuzzy K-Nearest Neighbor (FKNN) menggunakan metode jarak Manhattan dengan nilai K = 11 menghasilkan:
+        Model Fuzzy K-Nearest Neighbor (FKNN) menggunakan metode jarak Manhattan dengan nilai K = 7 menghasilkan:
         
         - Accuracy sebesar **{round(accuracy,4)}**
         - Precision sebesar **{round(precision,4)}**

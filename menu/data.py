@@ -45,20 +45,6 @@ def data_tab():
         .astype(float)
     )
 
-    st.title("Exploration Data Analyst")
-
-    st.subheader("Persebaran Data Boxplot")
-    # Boxplot
-    fig_box, axes = plt.subplots(3, 3, figsize=(16, 14))
-    axes = axes.flatten()
-    for i, col in enumerate(num_cols):
-        sns.boxplot(data=df, x="DX", y=col, ax=axes[i])
-        axes[i].set_title(f"Boxplot {col} vs DX")
-    # Remove empty subplot if num_cols < 9
-    for j in range(len(num_cols), 9):
-        fig_box.delaxes(axes[j])
-    fig_box.tight_layout()
-    st.pyplot(fig_box)
 
 
 
